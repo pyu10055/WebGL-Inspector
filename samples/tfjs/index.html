@@ -1,0 +1,40 @@
+<!doctype html>
+<html>
+
+<head>
+</head>
+
+<body>
+    <h1>TFJS WebGL tracing demo</h1>
+    <!-- Replace this with your image. Make sure CORS settings allow reading the image! -->
+    <img id="img" src="coffee.jpg"></img>
+
+</body>
+<script>
+    window.onload = function () {
+        benchmark();
+    };
+
+    function benchmark() {
+        const glext_ft = tf.backend().gpgpu.gl.getExtension("GLI_frame_terminator");
+        const img = document.getElementById('img');
+        mobilenet.load().then(model => {
+            const img =
+                // Classify the image.
+                model.classify(img).then(predictions => {
+                    console.log('Predictions: ');
+                    console.log(predictions);
+                });
+        });
+        if (glext_ft) {
+            glext_ft.frameTerminator();
+        }
+    }
+</script>
+<script src="embed.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs-core/dist/tf-core.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs-backend-webgl/dist/tf-backend-webgl.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs-converter/dist/tf-converter.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@tensorflow-models/mobilenet"> </script>
+
+</html>

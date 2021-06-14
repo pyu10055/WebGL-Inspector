@@ -2283,7 +2283,7 @@ function getMatches(code, regexInfo)
 	var index = 0,
 		match = null,
 		matches = [],
-		func = regexInfo.func ? regexInfo.func : defaultAdd
+		func = regexInfo.func ? regexInfo.func : defaultAdd,
 		pos = 0
 		;
 
@@ -2823,7 +2823,9 @@ sh.Highlighter.prototype = {
 			classes = [ 'syntaxhighlighter' ],
 			tabSize,
 			matches,
-			lineNumbers
+			lineNumbers,
+			className,
+			gutter
 			;
 
 		// process light mode

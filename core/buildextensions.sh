@@ -30,16 +30,16 @@ cp -R lib/* extensions/safari/webglinspector.safariextension/
 cp -R lib/* extensions/chrome/
 cp -R lib/* extensions/firefox/data/
 
-# Safari uses the chrome contentscript.js - nasty, but meh
-cp extensions/chrome/contentscript.js extensions/safari/webglinspector.safariextension/
+# # Safari uses the chrome contentscript.js - nasty, but meh
+# cp extensions/chrome/contentscript.js extensions/safari/webglinspector.safariextension/
 
-# Build Firefox Add-on.
-## Sync submodules.
-cd ..
-git submodule sync
-git submodule update --init
+# # Build Firefox Add-on.
+# ## Sync submodules.
+# cd ..
+# git submodule sync
+# git submodule update --init
 
-## Build.
-cd core/extensions/firefox
-make build
-cd ../..
+# ## Build.
+# cd core/extensions/firefox
+# make build
+# cd ../..

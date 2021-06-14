@@ -1,9 +1,11 @@
 define([
+        'SyntaxHighlighter',
         'SyntaxHighlighterGLSL',
         '../../Helpers',
         '../../shared/SurfaceInspector',
         '../../shared/TraceLine',
     ], function (
+        highlighter,
         dummy,
         helpers,
         SurfaceInspector,
@@ -31,7 +33,7 @@ define([
             firstLine += firstChar;
         }
 
-        SyntaxHighlighter.highlight({
+        highlighter.highlight({
             brush: 'glsl',
             'first-line': firstLine,
             highlight: highlightLines,

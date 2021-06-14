@@ -450,6 +450,12 @@ define([
                 var totalBytes = arguments[2] * arguments[3] * 4;
                 gl.statistics.textureReads.value += totalBytes;
             }
+            var tracked = Texture.getTracked(gl, arguments);
+            if (tracked) {
+                pushPixelStoreState(gl.rawgl, tracked.currentVersion);
+                tracked.currentVersion.pushCall("readPixels", [...arguments, result]);
+            }            
+
             return result;
         };
     };
